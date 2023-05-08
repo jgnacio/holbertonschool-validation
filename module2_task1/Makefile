@@ -28,5 +28,5 @@ clean: | stop	## Do stop and remove the binary and logs
 test:	## Testing the port 9999 awesome api with curl
 	@curl http://localhost:9999/health ; echo "" ; curl http://localhost:9999
 
-lint:
+lint:	## Run golang-lint for all go files in the proyect.
 	@$(LINT) run
