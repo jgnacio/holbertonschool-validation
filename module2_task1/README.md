@@ -1,3 +1,4 @@
+
 # Golang HTTP Web Server
 
 This repository contains a simple HTTP web server written in the Golang language, which listens to incoming HTTP requests on `localhost:9999`. The following functionalities are implemented:
@@ -30,7 +31,7 @@ make run
 ```
 
 
-## Project Life-cycle
+## Lifecycle
 
 The life-cycle of this project is defined by the following goals:
 
@@ -45,7 +46,7 @@ Sure! Here's an updated README file for the makefile:
 
 ### Makefile commands
 * **help**
-	```
+	```bash
 	make help
 	```
 
@@ -53,7 +54,7 @@ Sure! Here's an updated README file for the makefile:
 
 * **build**
 
-	```
+	```bash
 	make build
 	```
 
@@ -61,7 +62,7 @@ Sure! Here's an updated README file for the makefile:
 
 * **run**
 
-	```
+	```bash
 	make run
 	```
 
@@ -69,7 +70,7 @@ Sure! Here's an updated README file for the makefile:
 
 * **stop**
 
-	```
+	```bash
 	make stop
 	```
 
@@ -77,7 +78,7 @@ Sure! Here's an updated README file for the makefile:
 
 * **clean**
 
-	```
+	```bash
 	make clean
 	```
 
@@ -85,11 +86,25 @@ Sure! Here's an updated README file for the makefile:
 
 * **test**
 
-	```
+	```bash
 	make test
 	```
 
 	Tests the `awesome-api` application by sending HTTP requests to the server. If the server is running, it should respond with a message indicating that it is alive. If the requested path is `/`, the server should return a `404 Not Found` response, then sending another HTTP request to `/health`, if the server is running should return `ALIVE`.
+
+* **lint**
+	To maintain the quality of the codebase, it's good practice to use a linter to check for code style and formatting issues. This project uses the [golangci-lint](https://golangci-lint.run/) linter. To add the linter to the project, follow these steps:
+
+	1. Install golangci-lint by following the instructions in the [official documentation](https://golangci-lint.run/usage/install/#local-installation). 
+
+	2. Once you have installed the linter, add the following command to the Makefile:
+
+	```bash
+	make lint
+	```
+	
+	This command will run the golangci-lint linter on all Go files in the project.
+
 
 ## Variables
 
@@ -102,6 +117,8 @@ The following variables are defined in the Makefile:
 * SRC:
 
 	The name of the source file to compile. The default value is `main.go`.
+* LINT:
+	 The name of the linter used, The default value is `golangci-lint`.
 
 * RM:
 
