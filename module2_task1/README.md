@@ -35,14 +35,12 @@ make run
 
 The life-cycle of this project is defined by the following goals:
 
+- `lint`: linter on all Go files in the project.
 - `build`: compile the source code of the application to a binary named `awesome-api` with the command `make build`. The first build may take some time.
 - `run`: run the application in the background by executing the binary `awesome-api` and write logs into a file named `awesome-api.log` with the command `./awesome-api >./awesome-api.log 2>&1 &`.
 - `stop`: stop the application with the command `kill <pid-of-awesome-api>` where `<pid-of-awesome-api>` is the Process ID of the application. For instance, `kill "$(pgrep awesome-api)"`.
 - `clean`: stop the application, delete the binary `awesome-api` and the log file `awesome-api.log`.
 - `test`: test the application to ensure that it behaves as expected.
-
-Sure! Here's an updated README file for the makefile:
-
 
 ### Makefile commands
 * **help**
