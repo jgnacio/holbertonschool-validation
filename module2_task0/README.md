@@ -1,27 +1,42 @@
-# Website with Hugo
-Hugo is a powerful and flexible static site generator, and this project as part of the Holberton School projects, I make a simple website with hugo.
+# Golang HTTP Web Server
 
-## Run the hugo server
-### Prerequisites
+This repository contains a simple HTTP web server written in the Golang language, which listens to incoming HTTP requests on `localhost:9999`. The following functionalities are implemented:
+
+- If a request hits the path `/` (e.g., `http://localhost:9999/` or `http://localhost:9999`), a `404 Not Found` response is returned as the homepage is not implemented in this task.
+- If a request hits the path `/health` (e.g., `http://localhost:9999/health`), the server returns the message `ALIVE` if it is up and running.
+
+## Prerequisites
 
 * [Git](http://https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git")
 * [Go](http://https://go.dev/dl/ "Go") version 1.18 or later
-* [Hugo](http://https://gohugo.io/installation/linux/ "Hugo") version 0.84.0+extended
+
+## Project Setup
+
+With Golang installed in your environment, you can initialize a new project with the following commands:
+
+```bash
+git clone https://github.com/jgnacio/holbertonschool-validation.git
+cd holbertonschool-validation/module2_task0
+```
+
+After initializing the project, run the command:
+```bash
+make build
+``` 
+to generate the binary and necesary files, then
+run the server with:
+```bash
+make run
+```
 
 
-### Make comands
-| commands | description  |
-| ------------ | ------------ | ------------ |
-| help  | Show a brew description of the comands  |
-|  clean  |  Clean the entire distro folder |
-|  build |  Build the site with hugo  |
-|  post |  Create a new post |
+## Project Life-cycle
 
-## Advantages of using Hugo to create your website:
+The life-cycle of this project is defined by the following goals:
 
-**Speed**: Hugo is known for its speed, making it a great choice for large or complex websites.
-
-**Flexibility**: Hugo is incredibly flexible, allowing you to create a wide range of websites, from blogs to e-commerce sites.
-
-**Security**: Since Hugo is a static site generator, there's no need for a database or server-side code, which can make your site more secure.
+- `build`: compile the source code of the application to a binary named `awesome-api` with the command `make build`. The first build may take some time.
+- `run`: run the application in the background by executing the binary `awesome-api` and write logs into a file named `awesome-api.log` with the command `./awesome-api >./awesome-api.log 2>&1 &`.
+- `stop`: stop the application with the command `kill <pid-of-awesome-api>` where `<pid-of-awesome-api>` is the Process ID of the application. For instance, `kill "$(pgrep awesome-api)"`.
+- `clean`: stop the application, delete the binary `awesome-api` and the log file `awesome-api.log`.
+- `test`: test the application to ensure that it behaves as expected.
 
