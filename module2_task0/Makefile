@@ -15,15 +15,15 @@ ifeq (,$(wildcard ./go.mod))
 endif
 	@go build -o $(EXE_NAME)
 
-run: $(EXE_NAME)
-	@./awesome-api > ./awesome-api.log 2>&1 &
+run: $(EXE_NAME)	## Run the web server and run in the background
+	@./$(EXE_NAME) > ./$(EXE_NAME).log 2>&1 &
 
 .PHONY : stop clean
-stop:
-	@kill $(shell pgrep awesome-api)
+stop:	## Kill process
+	@kill $(shell pgrep $(EXE_NAME))
 
-clean: | stop
-	@rm -f awesome-api awesome-api.log
+clean: | stop	## Do stop and remove the binary and logs
+	@rm -f $(EXE_NAME) $(EXE_NAME).log
 
-test:
+test:	## Testing the port 9999 awesome api with curl
 	@curl http://localhost:9999/health ; echo "" ; curl http://localhost:9999
