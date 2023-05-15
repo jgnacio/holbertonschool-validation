@@ -21,3 +21,7 @@ Welcome to our site, please follow the next information in order to have a worki
 - integration-tests
 - check
 - validate
+
+## Workflow
+
+- checkout
