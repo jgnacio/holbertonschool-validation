@@ -1,0 +1,20 @@
+---
+name: module3_task0
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: hugoRun
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./module3_task0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
