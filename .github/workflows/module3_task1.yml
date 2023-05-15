@@ -1,0 +1,43 @@
+---
+name: "module3_task1"
+run-name: module3_task1
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  push:
+    branches:
+      - main
+
+jobs:
+  deps:
+    name: dependencies
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        working-directory: ./module3_task1
+        run: ./setup.sh
+
+      - name: Build web
+        run: make build
+
+      - name: Unit tests
+        run: make unit-tests
+
+      - name: Linter go files
+        run: make lint
+
+      - name: Validate html files
+        run: make validate
+
+      - name: Run the web aplication
+        run: make run
+
+      - name: Stop aplication
+        run: make stop
+
+      - name: Clean files
+        run: make clean
