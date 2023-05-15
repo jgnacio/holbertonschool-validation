@@ -22,22 +22,29 @@ jobs:
         run: ./setup.sh
 
       - name: Build web
+        working-directory: ./module3_task1
         run: make build
 
       - name: Unit tests
+        working-directory: ./module3_task1
         run: make unit-tests
 
       - name: Linter go files
+        working-directory: ./module3_task1
         run: make lint
 
       - name: Validate html files
+        working-directory: ./module3_task1
         run: make validate
 
       - name: Run the web aplication
+        working-directory: ./module3_task1
         run: make run
 
       - name: Stop aplication
+        working-directory: ./module3_task1
         run: make stop
 
       - name: Clean files
+        working-directory: ./module3_task1
         run: make clean
