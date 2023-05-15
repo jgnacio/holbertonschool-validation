@@ -1,13 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"io"
-	"log"
-	"net/http"
-	"os"
+  "fmt"
+  "io"
+  "log"
+  "net/http"
+  "os"
 
-	"github.com/gorilla/mux"
+  "github.com/gorilla/mux"
 )
 
 func main() {
@@ -27,6 +27,8 @@ func setupRouter() *mux.Router {
 
   // When an HTTP GET request is received on the path /health, delegates to the function "HealthCheckHandler()"
   r.HandleFunc("/health", HealthCheckHandler).Methods("GET")
+
+  // when an HTTP GET request is received on the path /hello
   r.HandleFunc("/hello", HelloHandler).Methods("GET")
 
   return r
@@ -51,18 +53,20 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
 
   var name string
   switch len(nameParams) {
-     case 0:
-       // Set the name variable to there when there is no parameter "name" in the request
-       name = "there"
-     default:
-       // Set the name variable to the first parameter "name" in the request
-       name = nameParams[0]
+  case 0:
+    // Set the name variable to an empty string when there is no parameter "name" in the request
+    name = ""
+  case 1:
+    // Set the name variable to the unique parameter "name" in the request
+    name = nameParams[0]
+  default:
+    // Set the name variable to the last occurence of the parameters "name" in the request
+    name = nameParams[len(nameParams)-1]
   }
 
-  // Return status 400 if name is empty
+  // Set a default value if the name is empty
   if name == "" {
-    w.WriteHeader(400)
-    return
+    name = "there"
   }
 
   // Write the string "Hello <name>" into the response's body

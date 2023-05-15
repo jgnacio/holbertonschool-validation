@@ -1,32 +1,29 @@
-EXE_NAME = awesome-api
-SRC = main.go
-LINT = golangci-lint
-RM = rm -r
+lint: ## Runs a lint tool
+	@golangci-lint run *.go
 
+build: lint ## Generate the website from markdown
+	@hugo
+	@go build -o awesome-api ./*.go
 
-default: help
+run: ## Run the application
+	./awesome-api >./awesome.log 2>&1 &
 
-help:	## Show this help usage
-	@fgrep -h "##" $(MAKEFILE_LIST) | grep -v fgrep | sed 's/:[[:blank:]]*##/:/'
+stop: ## Stop the app
+	@pkill awesome-api || true
 
-build: | lint $(SRC)	## Build the main.go file with go.
-ifeq (,$(wildcard ./go.mod))
-	@go mod init github.com/jgnacio/$(EXE_NAME)
-	@go mod tidy
-endif
-	@go build -o $(EXE_NAME)
+clean: stop ## Cleanup the content of the 'dist/' folder
+	@rm -rf dist/
+	@rm -f awesome-api awesome.log
 
-run: $(EXE_NAME)	## Run the web server and run in the background
-	@./$(EXE_NAME) > ./$(EXE_NAME).log 2>&1 &
+test: ## Tests the application
+	@echo "Test"
+	@if curl http://localhost:9999; then echo "\nTESTOK"; else echo "TESTFAILED"; fi
+	@if curl http://localhost:9999/health; then echo "\nTESTOK"; else echo "TESTFAILED"; fi
 
-stop:	## Kill process
-	@kill $(shell pgrep $(EXE_NAME))
+post: ## Create a new blog post using POST_TITLE and POST_NAME env variables
+	hugo new posts/$(POST_NAME).md
+	sed -i '/title:/c\title: "$(POST_TITLE)"' content/posts/$(POST_NAME).md
 
-clean: | stop	## Do stop and remove the binary and logs
-	@rm -f $(EXE_NAME) $(EXE_NAME).log
+help: ## Show this help.
+	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-test:	## Testing the port 9999 awesome api with curl
-	@curl http://localhost:9999/health ; echo "" ; curl http://localhost:9999
-
-lint:	## Run golang-lint for all go files in the proyect.
-	@$(LINT) run
