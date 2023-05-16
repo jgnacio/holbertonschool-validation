@@ -1,0 +1,61 @@
+---
+name: "module3_task2"
+run-name: module3_task2
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  push:
+    branches:
+      - main
+
+jobs:
+  deps:
+    name: dependencies
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        working-directory: ./module3_task2
+        run: ./setup.sh
+
+      - name: Build web
+        working-directory: ./module3_task2
+        run: make build
+
+      - name: Unit tests
+        working-directory: ./module3_task2
+        run: make unit-tests
+
+      - name: Linter go files
+        working-directory: ./module3_task2
+        run: make lint
+
+      - name: Validate html files
+        working-directory: ./module3_task2
+        run: make validate
+
+      - name: Run the web aplication
+        working-directory: ./module3_task2
+        run: make run
+
+      - name: Stop aplication
+        working-directory: ./module3_task2
+        run: make stop
+
+      - name: Create package
+        working-directory: ./module3_task2
+        if: ${{ job.status == 'success' }}
+        run: make package
+
+      - name: Upload package to the principal branch
+        if: ${{ job.status == 'success' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: awesome-website.zip
+          path: ./module3_task2/awesome-website.zip
+
+      - name: Clean files
+        run: make clean

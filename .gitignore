@@ -2,3 +2,4 @@ awesome-api
 *.out
 dist
 build
+Dockerfile
