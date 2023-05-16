@@ -28,7 +28,7 @@ jobs:
       - name: Unit tests
         working-directory: ./module3_task2
         run: make unit-tests
-      
+
       - name: Integration tests
         working-directory: ./module3_task2
         run: make integration-tests
