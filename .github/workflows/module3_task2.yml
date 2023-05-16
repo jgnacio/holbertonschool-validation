@@ -29,7 +29,7 @@ jobs:
         working-directory: ./module3_task2
         run: make unit-tests
 
-      - name: Linter go files
+      - name: Run Linter
         working-directory: ./module3_task2
         run: make lint
 
@@ -45,10 +45,14 @@ jobs:
         working-directory: ./module3_task2
         run: make stop
 
+      - name: Clean files
+        working-directory: ./module3_task2
+        run: make clean
+
       - name: Create package
         working-directory: ./module3_task2
         if: ${{ job.status == 'success' }}
-        run: make package
+        run: make build && make package
 
       - name: Upload package to the principal branch
         if: ${{ job.status == 'success' }}
@@ -56,6 +60,3 @@ jobs:
         with:
           name: awesome-website.zip
           path: ./module3_task2/awesome-website.zip
-
-      - name: Clean files
-        run: make clean
