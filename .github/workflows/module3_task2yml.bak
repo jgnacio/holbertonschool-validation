@@ -1,6 +1,6 @@
 ---
-name: "module3_task2"
-run-name: module3_task2
+name: "module3_task3"
+run-name: module3_task3
 
 on:
   schedule:
@@ -18,47 +18,47 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         run: ./setup.sh
 
       - name: Build web
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         run: make build
 
       - name: Unit tests
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         run: make unit-tests
 
       - name: Integration tests
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         run: make integration-tests
 
       - name: Test both (Integration tests / unit tests)
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         run: make test
 
       - name: Run Linter
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         run: make lint
 
       - name: Validate html files
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         run: make validate
 
       - name: Run the web aplication
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         run: make run
 
       - name: Stop aplication
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         run: make stop
 
       - name: Clean files
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         run: make clean
 
       - name: Create package
-        working-directory: ./module3_task2
+        working-directory: ./module3_task3
         if: ${{ job.status == 'success' }}
         run: make build && make package
 
@@ -67,4 +67,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: awesome-website.zip
-          path: ./module3_task2/awesome-website.zip
+          path: ./module3_task3/awesome-website.zip
