@@ -32,4 +32,6 @@ Welcome to our site, please follow the next information in order to have a worki
 - Validate html files
 - Run the web aplication
 - Stop aplication
+- Create package
+- Upload package
 - Clean files
