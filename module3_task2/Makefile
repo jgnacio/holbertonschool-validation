@@ -1,3 +1,5 @@
+LOG_FILE=awesome.log
+
 integration-tests: ## 
 	@go test -v -coverprofile=coverage-integrations.out
 
@@ -19,7 +21,7 @@ build: lint check ## Generate the website from markdown
 	@go build -o awesome-api ./*.go
 
 run: ## Run the application
-	@./awesome-api >./awesome.log 2>&1 &
+	@./awesome-api >./$(LOG_FILE) 2>&1 &
 
 stop: ## Stop the app
 	@pkill awesome-api || true
