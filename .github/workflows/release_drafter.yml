@@ -15,10 +15,11 @@ permissions:
 
 jobs:
   update_release_draft:
+    name: release_drafter
+    runs-on: ubuntu-22.04
     permissions:
       contents: write
       pull-requests: write
-    runs-on: ubuntu-20.04
     steps:
       - uses: release-drafter/release-drafter@v5
         with:
