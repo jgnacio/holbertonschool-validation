@@ -1,5 +1,6 @@
 ---
 template: |
   ## Changes
+
   $CHANGES
 name-template: 1.0.1
