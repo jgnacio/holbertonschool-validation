@@ -9,7 +9,7 @@ on:
     branches:
       - main
     tags:
-      "1.0.0"
+      1.0.0
 
 jobs:
   deps:
@@ -63,9 +63,9 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             ./module3_task3/awesome-website.zip
             ./module3_task3/DEPLOY.md
+          tag_name: 1.0.0
           body_path: ./module3_task3/DEPLOY.md
