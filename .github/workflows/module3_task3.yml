@@ -8,80 +8,62 @@ on:
   push:
     branches:
       - main
-    tags:
-      "1.0.0"
 
 jobs:
   deps:
     name: dependencies
     runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: ./module3_task3
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        working-directory: ./module3_task3
         run: ./setup.sh
 
       - name: Build web
-        working-directory: ./module3_task3
         run: make build
 
       - name: Unit tests
-        working-directory: ./module3_task3
         run: make unit-tests
 
       - name: Integration tests
-        working-directory: ./module3_task3
         run: make integration-tests
 
       - name: Test both (Integration tests / unit tests)
-        working-directory: ./module3_task3
         run: make test
 
       - name: Run Linter
-        working-directory: ./module3_task3
         run: make lint
 
       - name: Validate html files
-        working-directory: ./module3_task3
         run: make validate
 
       - name: Run the web aplication
-        working-directory: ./module3_task3
         run: make run
 
       - name: Stop aplication
-        working-directory: ./module3_task3
         run: make stop
 
       - name: Clean files
-        working-directory: ./module3_task3
         run: make clean
 
       - name: Create package
-        working-directory: ./module3_task3
-        if: ${{ job.status == 'success' }}
         run: make build && make package
 
       - name: Upload package to the principal branch
-        if: ${{ job.status == 'success' }}
         uses: actions/upload-artifact@v3
         with:
           name: awesome-website.zip
           path: ./module3_task3/awesome-website.zip
 
-      - name: Get DEPLOY.md contents
-        id: get-md
-        run: |
-          CONTENT=$(cat module3_task3/DEPLOY.md)
-          CONTENT="${CONTENT//'%'/'%25'}"
-          CONTENT="${CONTENT//$'\n'/'%0A'}"
-          CONTENT="${CONTENT//$'\r'/'%0D'}"
-          echo "::set-output name=body::$CONTENT"
-
-      - name: "1.0.0"
+      - name: Release
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: awesome-website.zip
-          body: ${{ steps.get-md.outputs.body }}
+          files: |
+            ./module3_task3/awesome-website.zip
+            ./module3_task3/DEPLOY.md
+          body_path: ./module3_task3/DEPLOY.md
