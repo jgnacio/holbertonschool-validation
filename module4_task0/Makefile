@@ -29,6 +29,8 @@ buildHugo: ## Generate the website from markdown
 buildGo: ## Generate the binary from 
 	@echo "in BuildGo" && pwd
 	@sudo docker run --rm --volume=$(pwd):/app --workdir=/app golang:1.15.8-buster \
+		ls -lah
+#	@sudo docker run --rm --volume=$(pwd):/app --workdir=/app golang:1.15.8-buster \
 		go build -o awesome-api ./*.go
 
 run: ## Run the application
