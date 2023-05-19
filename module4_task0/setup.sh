@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 sudo apt-get update && sudo apt-get upgrade -y;
-sudo apt-get install -y wget python3 python3-pip git zip node;
+sudo apt-get install -y wget python3 python3-pip git zip nodejs;
 
 # Install hugo
 sudo mkdir /app/hugo_bin;
