@@ -9,6 +9,7 @@ unit-tests: ## Runs unit tests in order to test the code
 		go test -v -short -coverprofile=coverage-units.out
 
 lint: ## Runs a lint tool
+	@echo "in lint" && pwd
 	@golangci-lint run *.go
 
 check: ## Runs a lint for the md and an analysis of the links
@@ -19,11 +20,14 @@ validate: ## Validates the syntax of the index.html in the dist directory
 	@python3 w3c_validator.py ./dist/index.html || true
 
 build: lint check buildHugo buildGo ## Generate the website from markdown
+	@echo "in Build" && pwd
 
 buildHugo: ## Generate the website from markdown
+	@echo "in BuildHugo" && pwd
 	@hugo
 
 buildGo: ## Generate the binary from 
+	@echo "in BuildGo" && pwd
 	@sudo docker run --rm --volume=$(pwd):/app --workdir=/app golang:1.15.8-buster \
 		go build -o awesome-api ./*.go
 
