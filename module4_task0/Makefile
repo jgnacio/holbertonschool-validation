@@ -1,10 +1,12 @@
 LOG_FILE=awesome.log
 
 integration-tests: ## Runs integration tests in order to test the code
-	@docker.exe run --rm --volume=$(pwd):/app --workdir=/app golang:1.15.8-buster sh -c "ls"
+	@sudo docker run --rm --volume=$(pwd):/app --workdir=/app golang:1.15.8-buster \
+		go test -v -coverprofile=coverage-integrations.out
 
 unit-tests: ## Runs unit tests in order to test the code
-	@go test -v -short -coverprofile=coverage-units.out
+	@sudo docker run --rm --volume=$(pwd):/app --workdir=/app golang:1.15.8-buster \
+		go test -v -short -coverprofile=coverage-units.out
 
 lint: ## Runs a lint tool
 	@golangci-lint run *.go
@@ -16,9 +18,14 @@ check: ## Runs a lint for the md and an analysis of the links
 validate: ## Validates the syntax of the index.html in the dist directory
 	@python3 w3c_validator.py ./dist/index.html || true
 
-build: lint check ## Generate the website from markdown
+build: lint check buildHugo buildGo ## Generate the website from markdown
+
+buildHugo: ## Generate the website from markdown
 	@hugo
-	@go build -o awesome-api ./*.go
+
+buildGo: ## Generate the binary from 
+	@sudo docker run --rm --volume=$(pwd):/app --workdir=/app golang:1.15.8-buster \
+		go build -o awesome-api ./*.go
 
 run: ## Run the application
 	@./awesome-api >./$(LOG_FILE) 2>&1 &
