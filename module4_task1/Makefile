@@ -21,8 +21,7 @@ check: ## Runs a lint for the md and an analysis of the links
 		echo "Check dump"
 
 validate: ## Validates the syntax of the index.html in the dist directory
-	@docker run --rm --volume=$(shell pwd):/app --workdir=/app awesome:build  \
-		echo 'python3 w3c_validator.py ./dist/index.html || true'
+	@python3 w3c_validator.py ./dist/index.html || true
 
 build: lint check buildHugo buildGo ## Generate the website from markdown
 

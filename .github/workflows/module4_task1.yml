@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: ./setup.sh
 
+      - name: Build Docker image
+        run: make build-docker
+
       - name: Build web
         run: make build
 
