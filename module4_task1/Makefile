@@ -2,7 +2,7 @@ LOG_FILE=awesome.log
 DOCKER_IMAGE=awesome:build
 
 build-docker: ## builds docker image
-	docker build -t $(DOCKER_IMAGE) -f build/Dockerfile .
+	docker build -t $(DOCKER_IMAGE) .build/
 
 integration-tests: ## Runs integration tests in order to test the code
 	@docker run --rm --volume=$(shell pwd):/app --workdir=/app awesome:build \
