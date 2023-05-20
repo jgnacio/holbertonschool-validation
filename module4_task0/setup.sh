@@ -14,14 +14,6 @@ curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/insta
 sudo mv ./bin/golangci-lint /usr/bin/;
 sudo rm -rf ./bin
 
-# Nodejs install with nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")";
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";
-nvm install "18.16.0";
-nvm use 18;
-nvm version;
-
 # Install markdown-link-cli and markdown-link-check
 npm install -g markdownlint-cli markdown-link-check;
 
