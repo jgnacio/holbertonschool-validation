@@ -7,8 +7,8 @@ build-docker: ## builds docker image
 docker-tests: ## tests docker image
 	@docker run --rm --volume=/var/run/docker.sock:/var/run/docker.sock --volume=$(shell pwd):/app \
 	--workdir=/app ${DOCKER_IMAGE} \
-	container-structure-test test --image ${DOCKER_IMAGE} \
-	--config .build/cst.yml
+	container-structure-test test -q --image ${DOCKER_IMAGE} \
+	--config .build/cst.yml && echo OK
 
 integration-tests: ## Runs integration tests in order to test the code
 	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE} \
