@@ -5,9 +5,10 @@ build-docker: ## builds docker image
 	@docker build -t $(DOCKER_IMAGE) .build/.
 
 docker-tests: ## tests docker image
-	@docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v \
-		"$(shell pwd):/go/src/app" -w "/app" ${DOCKER_IMAGE} \
-		container-structure-test test --image ${DOCKER_IMAGE} --config .build/cst.yml
+	@docker run --rm --volume=/var/run/docker.sock:/var/run/docker.sock --volume=$(shell pwd):/app \
+	--workdir=/app ${DOCKER_IMAGE} \
+	container-structure-test test --image ${DOCKER_IMAGE} \
+	--config .build/cst.yml
 
 integration-tests: ## Runs integration tests in order to test the code
 	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE} \
