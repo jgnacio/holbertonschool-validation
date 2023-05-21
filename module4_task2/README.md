@@ -35,3 +35,6 @@ Welcome to our site, please follow the next information in order to have a worki
 - Create package
 - Upload package
 - Clean files
+- build-docker
+- docker-tests
+- help
