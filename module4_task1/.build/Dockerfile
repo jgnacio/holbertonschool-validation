@@ -1,5 +1,4 @@
-FROM golang:1.15.8-buster
-
+FROM golang:latest
 # Update packages
 RUN apt update
 
