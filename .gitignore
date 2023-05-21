@@ -2,7 +2,6 @@ awesome-api
 *.out
 dist
 build
-Dockerfile
 awesome-website.zip
 # Local Netlify folder
 .netlify
