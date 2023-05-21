@@ -3,20 +3,16 @@ FROM golang:1.15.8-alpine
 RUN apk update
 
 # Install dependecies
-RUN apk add wget curl
-
-# Install hugo
-RUN mkdir -p /app/hugo_bin
-RUN wget https://github.com/gohugoio/hugo/releases/download/v0.84.0/hugo_extended_0.84.0_Linux-64bit.tar.gz -P /app/hugo_bin/
-RUN tar -xf /app/hugo_bin/hugo_extended_0.84.0_Linux-64bit.tar.gz -C /app/hugo_bin/
-RUN mv /app/hugo_bin/hugo /bin/
-RUN rm -rf /app/hugo_bin
+RUN apk add wget curl grep hugo
 
 # Install hadolint
-RUN wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
-RUN chmod +x /bin/hadolint
+RUN wget -O /usr/bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
+RUN chmod +x /usr/bin/hadolint
+
+# install container structure test
+RUN curl -LO https://storage.googleapis.com/container-structure-test/latest/container-structure-test-linux-amd64 && chmod +x container-structure-test-linux-amd64 && mv container-structure-test-linux-amd64 /usr/bin/container-structure-test
 
 # Install golangcli-lint
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s
-RUN mv ./bin/golangci-lint /bin/
+RUN mv ./bin/golangci-lint /usr/bin/
 RUN rm -rf ./bin
