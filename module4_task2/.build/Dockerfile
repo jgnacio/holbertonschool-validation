@@ -2,9 +2,9 @@ FROM golang:1.15.8-alpine
 # Update packages
 RUN apk update
 
-# Install dependecies
+# Install dependecies, install build base to import C in go files
 # hadolint ignore=DL3018
-RUN apk --no-cache add curl hugo bash
+RUN apk --no-cache add curl hugo bash build-base
 
 # Install hadolint
 RUN curl -LO https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 && \
