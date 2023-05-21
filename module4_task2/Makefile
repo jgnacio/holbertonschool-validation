@@ -4,20 +4,25 @@ DOCKER_IMAGE=awesome:build
 build-docker: ## builds docker image
 	@docker build -t $(DOCKER_IMAGE) .build/.
 
+docker-tests: ## tests docker image
+	@docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v \
+		"$(shell pwd):/go/src/app" -w "/app" ${DOCKER_IMAGE} \
+		container-structure-test test --image ${DOCKER_IMAGE} --config .build/cst.yml
+
 integration-tests: ## Runs integration tests in order to test the code
-	@docker run --rm --volume=$(shell pwd):/app --workdir=/app awesome:build \
+	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE} \
 		go test -v -coverprofile=coverage-integrations.out
 
 unit-tests: ## Runs unit tests in order to test the code
-	@docker run --rm --volume=$(shell pwd):/app --workdir=/app awesome:build  \
+	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE}  \
 		go test -v -short -coverprofile=coverage-units.out
 
 lint: ## Runs a lint tool
-	@docker run --rm --volume=$(shell pwd):/app --workdir=/app awesome:build  \
+	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE}  \
 		golangci-lint run *.go
 
 check: ## Runs a lint for the md and an analysis of the links
-	@docker run --rm --volume=$(shell pwd):/app --workdir=/app awesome:build  \
+	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE}  \
 		echo "Check dump"
 
 validate: ## Validates the syntax of the index.html in the dist directory
@@ -26,11 +31,11 @@ validate: ## Validates the syntax of the index.html in the dist directory
 build: lint check buildHugo buildGo ## Generate the website from markdown
 
 buildHugo: ## Generate the website from markdown
-	@docker run --rm --volume=$(shell pwd):/app --workdir=/app awesome:build  \
+	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE}  \
 		hugo
 
 buildGo: ## Generate the binary from 
-	@docker run --rm --volume=$(shell pwd):/app --workdir=/app awesome:build  \
+	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE}  \
 		go build -o awesome-api ./*.go
 
 run: ## Run the application
@@ -59,4 +64,3 @@ package: ## Create a .zip file named awesome-website.zip that contain dist/ and 
 
 help: ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
-
