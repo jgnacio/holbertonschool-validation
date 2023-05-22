@@ -5,3 +5,5 @@ build
 awesome-website.zip
 # Local Netlify folder
 .netlify
+resources
+.hugo_build.lock

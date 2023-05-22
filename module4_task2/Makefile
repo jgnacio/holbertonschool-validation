@@ -18,9 +18,8 @@ unit-tests: ## Runs unit tests in order to test the code
 	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE}  \
 		go test -v -short -coverprofile=coverage-units.out
 
-lint: build-docker## Runs a lint tool
-	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE}  \
-		golangci-lint run *.go
+lint: ## Run all lint checks
+	@hadolint .build/Dockerfile && echo OK
 
 check: ## Runs a lint for the md and an analysis of the links
 	@docker run --rm --volume=$(shell pwd):/app --workdir=/app ${DOCKER_IMAGE}  \
