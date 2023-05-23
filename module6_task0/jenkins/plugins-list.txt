@@ -1,0 +1,113 @@
+JavaMail API (javax-mail-api): 1.6.2-5
+Plain Credentials Plugin (plain-credentials): 143.v1b_df8b_d3b_e48
+Pipeline: Supporting APIs (workflow-support): 839.v35e2736cfd5c
+SSH server (sshd): 3.0.3
+Pipeline SCM API for Blue Ocean (blueocean-pipeline-scm-api): 1.26.0
+Variant Plugin (variant): 59.vf075fe829ccb
+Font Awesome API Plugin (font-awesome-api): 6.1.2-1
+SnakeYAML API Plugin (snakeyaml-api): 1.31-84.ve43da_fb_49d0b
+Git Pipeline for Blue Ocean (blueocean-git-pipeline): 1.26.0
+Folders Plugin (cloudbees-folder): 6.740.ve4f4ffa_dea_54
+Pipeline Graph Analysis Plugin (pipeline-graph-analysis): 202.va_d268e64deb_3
+Popper.js 2 API Plugin (popper2-api): 2.11.6-1
+Pipeline: API (workflow-api): 1200.v8005c684b_a_c6
+Config API for Blue Ocean (blueocean-config): 1.26.0
+JWT for Blue Ocean (blueocean-jwt): 1.26.0
+Docker Commons Plugin (docker-commons): 1.21
+Branch API Plugin (branch-api): 2.1071.v1a_188a_562481
+Handy Uri Templates 2.x API Plugin (handy-uri-templates-2-api): 2.1.8-22.v77d5b_75e6953
+Pipeline implementation for Blue Ocean (blueocean-pipeline-api-impl): 1.26.0
+Blue Ocean Core JS (blueocean-core-js): 1.26.0
+Dashboard for Blue Ocean (blueocean-dashboard): 1.26.0
+Plugin Utilities API Plugin (plugin-util-api): 2.17.0
+Pipeline: Stage Step (pipeline-stage-step): 293.v200037eefcd5
+Pub-Sub "light" Bus (pubsub-light): 1.16
+Pipeline: Groovy Libraries (pipeline-groovy-lib): 612.v84da_9c54906d
+Display URL API (display-url-api): 2.3.6
+Mailer Plugin (mailer): 435.438.v5b_81173f5b_a_1
+Bootstrap 5 API Plugin (bootstrap5-api): 5.2.0-1
+Credentials Binding Plugin (credentials-binding): 523.525.vb_72269281873
+Autofavorite for Blue Ocean (blueocean-autofavorite): 1.2.5
+SSH Credentials Plugin (ssh-credentials): 277.280.v1e86b_7d0056b_
+Script Security Plugin (script-security): 1190.v65867a_a_47126
+GitHub Pipeline for Blue Ocean (blueocean-github-pipeline): 1.26.0
+bouncycastle API Plugin (bouncycastle-api): 2.25
+JDK Tool Plugin (jdk-tool): 1.0
+Command Agent Launcher Plugin (command-launcher): 1.2
+JavaScript GUI Lib: ACE Editor bundle plugin (ace-editor): 1.1
+GitHub API Plugin (github-api): 1.303-400.v35c2d8258028
+Docker Pipeline (docker-workflow): 1.28
+Personalization for Blue Ocean (blueocean-personalization): 1.26.0
+REST API for Blue Ocean (blueocean-rest): 1.26.0
+Blue Ocean Pipeline Editor (blueocean-pipeline-editor): 1.26.0
+GitHub Branch Source Plugin (github-branch-source): 1677.v731f745ea_0cf
+Pipeline: Declarative Extension Points API (pipeline-model-extensions): 2.2121.vd87fb_6536d1e
+ECharts API Plugin (echarts-api): 5.3.3-1
+Jakarta Mail API (jakarta-mail-api): 2.0.1-2
+JSch dependency plugin (jsch): 0.2.8-65.v052c39de79b_2
+HTML Publisher plugin (htmlpublisher): 1.31
+Authentication Tokens API Plugin (authentication-tokens): 1.4
+OkHttp Plugin (okhttp-api): 4.9.3-108.v0feda04578cf
+Git plugin (git): 4.11.5
+Design Language (jenkins-design-language): 1.26.0
+Durable Task Plugin (durable-task): 507.v050055d0cb_dd
+JavaBeans Activation Framework (JAF) API (javax-activation-api): 1.2.0-5
+SCM API Plugin (scm-api): 631.v9143df5b_e4a_a
+Pipeline: Basic Steps (workflow-basic-steps): 994.vd57e3ca_46d24
+Pipeline: Groovy (workflow-cps): 2729.2732.vda_e3f07b_5a_f8
+Structs Plugin (structs): 324.va_f5d6774f3a_d
+Jakarta Activation API (jakarta-activation-api): 2.0.1-2
+Token Macro Plugin (token-macro): 321.vd7cc1f2a_52c8
+Git client plugin (git-client): 3.11.2
+Trilead API Plugin (trilead-api): 1.67.vc3938a_35172f
+Bitbucket Pipeline for Blue Ocean (blueocean-bitbucket-pipeline): 1.26.0
+Favorite (favorite): 2.4.2
+Pipeline: Model API (pipeline-model-api): 2.2121.vd87fb_6536d1e
+Pipeline: Job (workflow-job): 1189.va_d37a_e9e4eda_
+Events API for Blue Ocean (blueocean-events): 1.26.0
+Credentials Plugin (credentials): 1087.1089.v2f1b_9a_b_040e4
+JAXB plugin (jaxb): 2.3.7-1
+Pipeline: Multibranch (workflow-multibranch): 716.vc692a_e52371b_
+JUnit Plugin (junit): 1143.1145.v81b_b_9579a_019
+Caffeine API Plugin (caffeine-api): 2.9.3-65.v6a_47d0f4d1fe
+Common API for Blue Ocean (blueocean-commons): 1.26.0
+Pipeline: Declarative (pipeline-model-definition): 2.2121.vd87fb_6536d1e
+Server Sent Events (SSE) Gateway Plugin (sse-gateway): 1.25
+Pipeline: Build Step (pipeline-build-step): 488.v8993df156e8d
+Web for Blue Ocean (blueocean-web): 1.26.0
+GitHub plugin (github): 1.34.3.1
+Matrix Project Plugin (matrix-project): 772.v494f19991984
+Pipeline: Step API (workflow-step-api): 639.v6eca_cd8c04a_a_
+Pipeline: Nodes and Processes (workflow-durable-task-step): 1190.vc93d7d457042
+Pipeline: Input Step (pipeline-input-step): 466.v6d0a_5df34f81
+Pipeline: Stage Tags Metadata (pipeline-stage-tags-metadata): 2.2121.vd87fb_6536d1e
+Java JSON Web Token (JJWT) Plugin (jjwt-api): 0.11.5-77.v646c772fddb_0
+REST Implementation for Blue Ocean (blueocean-rest-impl): 1.26.0
+Bitbucket Branch Source Plugin (cloudbees-bitbucket-branch-source): 784.v7fcdc7c670f6
+Pipeline: Milestone Step (pipeline-milestone-step): 111.v449306f708b_7
+Display URL for Blue Ocean (blueocean-display-url): 2.4.1
+Jackson 2 API Plugin (jackson2-api): 2.14.2-319.v37853346a_229
+i18n for Blue Ocean (blueocean-i18n): 1.26.0
+Pipeline: SCM Step (workflow-scm-step): 408.v7d5b_135a_b_d49
+Checks API plugin (checks-api): 1.7.5
+Blue Ocean (blueocean): 1.25.3
+Apache HttpComponents Client 4.x API Plugin (apache-httpcomponents-client-4-api): 4.5.13-138.v4e7d9a_7b_a_e61
+JQuery3 API Plugin (jquery3-api): 3.6.1-1
+OWASP Markup Formatter Plugin (antisamy-markup-formatter): 159.v25b_c67cd35fb_
+Build Timeout (build-timeout): 1.24
+commons-lang3 v3.x Jenkins API Plugin (commons-lang3-api): 3.12.0-36.vd97de6465d5b_
+Timestamper (timestamper): 1.21
+Resource Disposer Plugin (resource-disposer): 0.20
+Workspace Cleanup Plugin (ws-cleanup): 0.43
+Ant Plugin (ant): 481.v7b_09e538fcca
+Gradle Plugin (gradle): 2.7
+Pipeline (workflow-aggregator): 596.v8c21c963d92d
+Pipeline: GitHub Groovy Libraries (pipeline-github-lib): 38.v445716ea_edda_
+Pipeline: REST API Plugin (pipeline-rest-api): 2.28
+JavaScript GUI Lib: Moment.js bundle plugin (momentjs): 1.1.1
+Pipeline: Stage View Plugin (pipeline-stage-view): 2.28
+SSH Build Agents plugin (ssh-slaves): 1.821.vd834f8a_c390e
+Matrix Authorization Strategy Plugin (matrix-auth): 3.1.5
+PAM Authentication plugin (pam-auth): 1.10
+LDAP Plugin (ldap): 2.11
+Email Extension Plugin (email-ext): 2.92
