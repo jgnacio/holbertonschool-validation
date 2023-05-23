@@ -1,0 +1,20 @@
+---
+schemaVersion: '2.0.0'
+commandTests:
+  - name: 'java is installed'
+    command: 'java'
+    args: ['-version']
+    expectedOutput: ['openjdk version "11']
+fileExistenceTests:
+  - name: 'Plugins - git is installed'
+    path: '/usr/share/jenkins/ref/plugins/git.jpi'
+    shouldExist: true
+  - name: 'Plugins - blueocean is installed'
+    path: '/usr/share/jenkins/ref/plugins/blueocean.jpi'
+    shouldExist: true
+  - name: 'Plugins - workflow-api is installed'
+    path: '/usr/share/jenkins/ref/plugins/workflow-api.jpi'
+    shouldExist: true
+  - name: 'Plugins - matrix-project is installed'
+    path: '/usr/share/jenkins/ref/plugins/matrix-project.jpi'
+    shouldExist: true
