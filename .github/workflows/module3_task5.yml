@@ -7,8 +7,6 @@ on:
     - cron: "0 1 * * *"
   pull_request:
   push:
-    branches:
-      - main
     tags: 1.0.0
 
 jobs:
