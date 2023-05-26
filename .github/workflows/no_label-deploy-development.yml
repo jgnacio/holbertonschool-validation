@@ -1,0 +1,44 @@
+---
+name: "module3_task5"
+run-name: module3_task5
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  pull_request:
+  push:
+    branches:
+      - "development"
+    tags: 1.0.0
+
+jobs:
+  deps:
+    name: dependencies
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: ./module3_task5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: ./setup_development.sh
+
+      - name: Build web
+        run: make build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: "module3_task5/dist"
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy"
+          enable-pull-request-comment: true
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
