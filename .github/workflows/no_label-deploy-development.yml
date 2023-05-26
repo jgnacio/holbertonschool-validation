@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: ./setup_development.sh
+        run: ./setup_dev.sh
 
       - name: Build web
         run: make build
@@ -39,6 +39,6 @@ jobs:
           enable-commit-comment: true
           overwrites-pull-request-comment: true
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN_DEV }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID_DEV }}
         timeout-minutes: 1
