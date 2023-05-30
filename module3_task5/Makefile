@@ -44,4 +44,3 @@ package: ## Create a .zip file named awesome-website.zip that contain dist/ and 
 
 help: ## Show this help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
-
